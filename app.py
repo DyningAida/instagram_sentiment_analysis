@@ -46,18 +46,18 @@ def index():
                     # translate ke bahasa inggris
                     translator = google_translator()
                     eng_capt = translator.translate(caption,lang_tgt='en')
-                    # blob caption
-                    eng_capt = TextBlob(eng_capt)
-                    # cek apakah panjang data > 3, jika tidak, maka menghasilkan no sentiment
-                    if len(str(eng_capt))>3:
-                        if eng_capt.sentiment.polarity < 0:
-                            sentiment = 'negative'
-                        elif eng_capt.sentiment.polarity == 0:
-                            sentiment = 'neutral'
-                        else:
-                            sentiment = 'positive'
+                else:
+                    eng_capt = caption
+                # blob caption
+                eng_capt = TextBlob(eng_capt)
+                # cek apakah panjang data > 3, jika tidak, maka menghasilkan no sentiment
+                if len(str(eng_capt))>3:
+                    if eng_capt.sentiment.polarity < 0:
+                        sentiment = 'negative'
+                    elif eng_capt.sentiment.polarity == 0:
+                        sentiment = 'neutral'
                     else:
-                        sentiment = 'no sentiment'
+                        sentiment = 'positive'
                 else:
                     sentiment = 'no sentiment'
                 # mengambil nilai polarity
