@@ -72,5 +72,5 @@ def index():
         list_data = list(zip(num, time, caption_list, polarity, sentim))
         return render_template('index.html', list_data=list_data, amount_data=amount_data, username=username)
     return render_template('layout.html')
-if __name__ == "__main__":
-    app.run(debug=True)
+#if __name__ == "__main__":
+#    app.run(debug=True)
