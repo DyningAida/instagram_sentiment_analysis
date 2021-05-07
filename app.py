@@ -50,8 +50,8 @@ def index():
                     eng_capt = caption
                 # blob caption
                 eng_capt = TextBlob(eng_capt)
-                # cek apakah panjang data > 3, jika tidak, maka menghasilkan no sentiment
-                if len(str(eng_capt))>3:
+                # cek apakah caption ada atau tidak, jika ada, maka hitung polarity
+                if str(caption) != 'nan':
                     if eng_capt.sentiment.polarity < 0:
                         sentiment = 'negative'
                     elif eng_capt.sentiment.polarity == 0:
@@ -59,6 +59,7 @@ def index():
                     else:
                         sentiment = 'positive'
                 else:
+                    # jika tidak ada caption
                     sentiment = 'no sentiment'
                 # mengambil nilai polarity
                 polarity_value = eng_capt.sentiment.polarity
