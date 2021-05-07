@@ -4,3 +4,4 @@ textblob
 langdetect
 google-trans-new
 gunicorn
+nltk

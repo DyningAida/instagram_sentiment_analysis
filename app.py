@@ -5,6 +5,7 @@ from textblob import TextBlob
 import re, random
 from langdetect import detect
 from google_trans_new import google_translator  
+nltk.download('punkt')
 
 app = Flask(__name__)
 
