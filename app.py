@@ -5,7 +5,6 @@ from textblob import TextBlob
 import re, random
 from langdetect import detect
 from google_trans_new import google_translator  
-nltk.download('punkt')
 
 app = Flask(__name__)
 
@@ -16,8 +15,13 @@ def index():
         username = request.form['username']
         # mengambil data profile sesuai username yang diinput
         ig = Profile(username)
+        # give session id to scrap
+        headers = {
+            "user-agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Mobile Safari/537.36 Edg/87.0.664.57",
+            "cookie": "sessionid=2055545287%3AarnEjTWjTxeh7f%3A4;"
+        }
         # scrap data profil
-        ig.scrape()
+        ig.scrape(headers=headers)
         # mengambil data recent post
         ig_posts = ig.get_recent_posts()
         posts = []
@@ -29,7 +33,7 @@ def index():
         i = 0
         for post in ig_posts:
             # scrap post
-            post.scrape()
+            post.scrape(headers=headers)
             # menambahkan data post yang discrap, mengubah ke dict dan append ke posts list
             posts.append(post.to_dict())
             # lower & clean data caption
