@@ -1,0 +1,5 @@
+Flask==1.1.2
+instascrape==0.1
+textblob==0.15.3
+langdetect==1.0.8
+google-trans-new==1.1.9
